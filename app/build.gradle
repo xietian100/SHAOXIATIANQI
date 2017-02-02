@@ -31,4 +31,5 @@ dependencies {
     compile files('libs/gson.jar')
     compile files('libs/xUtils-2.6.14.jar')
     compile files('libs/BaiduLBS_Android.jar')
+    compile 'com.github.lecho:hellocharts-library:1.5.8@aar'
 }

@@ -66,7 +66,7 @@ public class HorizontalListViewAdapter extends BaseAdapter{
         }
         WeatherInfo.ResultsBean.DailyBean daily = weatherInfo1.getResults().get(0).getDaily().get(position);
 
-        vh.item_date.setText(daily.getDate());
+        vh.item_date.setText(daily.getDate().substring(5));
         vh.item_weather.setText(daily.getText_day());
         vh.item_high.setText(daily.getHigh());
         vh.item_low.setText(daily.getLow());
