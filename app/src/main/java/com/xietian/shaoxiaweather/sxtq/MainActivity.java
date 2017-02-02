@@ -16,6 +16,8 @@ import com.xietian.shaoxiaweather.sxtq.bean.WeatherInfo;
 import com.xietian.shaoxiaweather.sxtq.net.GetDataFromServer;
 import com.xietian.shaoxiaweather.sxtq.utils.PrefUtils;
 import com.xietian.shaoxiaweather.sxtq.utils.UIUtils;
+import com.xietian.shaoxiaweather.sxtq.view.FutureDetail;
+import com.xietian.shaoxiaweather.sxtq.view.TodayDetail;
 
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
@@ -26,6 +28,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private ImageView location;
     private ImageView refresh;
     private TextView cityname;
+    private TodayDetail todayDetail;
+    private FutureDetail future_detail;
 
 
     @Override
@@ -43,12 +47,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         location=(ImageView) findViewById(R.id.location);
         refresh=(ImageView) findViewById(R.id.refresh);
         cityname= (TextView) findViewById(R.id.cityname);
+        todayDetail= (TodayDetail) findViewById(R.id.today_detail);
+        future_detail= (FutureDetail) findViewById(R.id.future_detail);
 
         cityname.setText(city);
-        share.setOnClickListener(this);
-        location.setOnClickListener(this);
-        refresh.setOnClickListener(this);
-    }
+    share.setOnClickListener(this);
+    location.setOnClickListener(this);
+    refresh.setOnClickListener(this);
+}
 
     private void ininData(){
         weatherInfo = PrefUtils.getString("weatherInfo", null, UIUtils.getContext());
