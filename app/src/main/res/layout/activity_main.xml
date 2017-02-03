@@ -64,7 +64,7 @@
     <com.xietian.shaoxiaweather.sxtq.view.FutureDetail
         android:id="@+id/future_detail"
         android:layout_width="360dp"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
         android:layout_marginTop="8dp"
         android:background="#ecf0f1"></com.xietian.shaoxiaweather.sxtq.view.FutureDetail>
 
