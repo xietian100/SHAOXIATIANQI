@@ -7,11 +7,16 @@
     <com.xietian.shaoxiaweather.sxtq.view.HorizontalListView
         android:id="@+id/HorizontalListView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></com.xietian.shaoxiaweather.sxtq.view.HorizontalListView>
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        ></com.xietian.shaoxiaweather.sxtq.view.HorizontalListView>
 
     <lecho.lib.hellocharts.view.LineChartView
         android:id="@+id/line_chart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        >
+        </lecho.lib.hellocharts.view.LineChartView>
 
 </LinearLayout>
