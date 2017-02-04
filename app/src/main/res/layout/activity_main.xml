@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:scrollbars="vertical">
+    android:scrollbars="vertical"
+    >
 
     <RelativeLayout
         android:layout_width="360dp"
@@ -26,9 +27,7 @@
         <ImageView
             android:id="@+id/location"
             android:layout_width="20dp"
-
             android:layout_height="20dp"
-
             android:layout_alignParentRight="true"
             android:layout_marginRight="133dp"
             android:background="@drawable/location"
@@ -68,11 +67,11 @@
         android:layout_marginTop="8dp"
         android:background="#ecf0f1"></com.xietian.shaoxiaweather.sxtq.view.FutureDetail>
 
-    <RelativeLayout
+    <Relativecom.xietian.shaoxiaweather.sxtq.view.SuggestionLayout
         android:layout_width="match_parent"
         android:layout_height="140dp"
         android:layout_marginTop="8dp"
-        android:background="#ecf0f1"></RelativeLayout>
+        android:background="#ecf0f1"></Relativecom.xietian.shaoxiaweather.sxtq.view.SuggestionLayout>
 
 
 </LinearLayout>

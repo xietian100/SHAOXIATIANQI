@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 
 import com.xietian.shaoxiaweather.sxtq.R;
 import com.xietian.shaoxiaweather.sxtq.adapter.HorizontalListViewAdapter;
+import com.xietian.shaoxiaweather.sxtq.bean.WeatherInfo;
 import com.xietian.shaoxiaweather.sxtq.utils.UIUtils;
 
 import java.util.ArrayList;
@@ -59,24 +60,44 @@ public class FutureDetail extends LinearLayout{
         lineChart= (LineChartView) view.findViewById(R.id.line_chart);
 
 
-        List<PointValue> values = new ArrayList<PointValue>();
-        values.add(new PointValue(0, 2));
-        values.add(new PointValue(1, 4));
-        values.add(new PointValue(2, 3));
+        List<PointValue> valuesHigh = new ArrayList<PointValue>();
+        List<PointValue> valuesLow = new ArrayList<PointValue>();
+
+        int i;
+        List<WeatherInfo.ResultsBean.DailyBean> day = horizontalListViewAdapter.getWeatherInfo1().getResults().get(0).getDaily();
+        for(i=0;i<day.size();i++){
+            valuesHigh.add(new PointValue(i, Integer.parseInt(day.get(i).getHigh())));
+            valuesLow.add(new PointValue(i, Integer.parseInt(day.get(i).getLow())));
+        }
+
 
 
         //In most cased you can call data model methods in builder-pattern-like manner.
-        Line line = new Line(values).setColor(Color.BLUE).setCubic(true);
+        Line lineHigh = new Line(valuesHigh).setColor(Color.parseColor("#2c3e50")).setCubic(false).setStrokeWidth(1);
+        lineHigh.setPointRadius(3);//座标点大小
+        lineHigh.setFilled(true);//是否填充曲线的面积
+
+        Line lineLow = new Line(valuesLow).setColor(Color.parseColor("#2c3e20")).setCubic(true).setStrokeWidth(1);
+        lineLow.setPointRadius(3);//座标点大小
+        lineLow.setFilled(true);//是否填充曲线的面积
+
+
+
         List<Line> lines = new ArrayList<Line>();
-        lines.add(line);
+        lines.add(lineHigh);
+        lines.add(lineLow);
 
         LineChartData data = new LineChartData();
         data.setValueLabelBackgroundEnabled(false);
         data.setLines(lines);
 
-        LineChartView chart = new LineChartView(UIUtils.getContext());
-        chart.setLineChartData(data);
-
+        lineChart.setInteractive(false);
+        lineChart.setScrollEnabled(false);
+        lineChart.setLineChartData(data);
+        lineChart.setValueTouchEnabled(false);
+        lineChart.setFocusableInTouchMode(false);
+        lineChart.setVisibility(View.VISIBLE);
+        lineChart.startDataAnimation();
     }
 
 

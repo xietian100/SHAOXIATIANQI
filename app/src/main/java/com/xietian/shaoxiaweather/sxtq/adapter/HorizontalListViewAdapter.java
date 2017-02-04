@@ -24,6 +24,11 @@ import com.xietian.shaoxiaweather.sxtq.view.ChooseWeatherPic;
 public class HorizontalListViewAdapter extends BaseAdapter{
 
     String weatherInfo = PrefUtils.getString("weatherInfo", null, UIUtils.getContext());
+
+    public WeatherInfo getWeatherInfo1() {
+        return weatherInfo1;
+    }
+
     WeatherInfo weatherInfo1 = GsonTools.changeGsonToBean(weatherInfo, WeatherInfo.class);
 
     public HorizontalListViewAdapter(Context con){

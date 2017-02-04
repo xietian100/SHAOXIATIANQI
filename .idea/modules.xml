@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/SXTQ.iml" filepath="$PROJECT_DIR$/SXTQ.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/shaoxiatianqi.iml" filepath="$PROJECT_DIR$/shaoxiatianqi.iml" />
     </modules>
   </component>
 </project>
