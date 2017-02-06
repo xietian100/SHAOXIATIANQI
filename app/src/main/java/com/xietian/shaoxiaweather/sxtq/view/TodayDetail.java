@@ -30,6 +30,12 @@ public class TodayDetail extends LinearLayout {
     private TextView Weather;
     private TextView Temp;
 
+    public WeatherInfo getWeatherInfo1() {
+        return weatherInfo1;
+    }
+
+    WeatherInfo weatherInfo1;
+
 
     public TodayDetail(Context context) {
         super(context);
@@ -59,8 +65,15 @@ public class TodayDetail extends LinearLayout {
         Weather = (TextView) view.findViewById(R.id.Weather);
         Temp = (TextView) view.findViewById(R.id.Temp);
 
+        /**
+         * TODO
+         * 可从mainActivity中直接取出
+         */
+
         String weatherInfo = PrefUtils.getString("weatherInfo", null, UIUtils.getContext());
-        WeatherInfo weatherInfo1 = GsonTools.changeGsonToBean(weatherInfo, WeatherInfo.class);
+        weatherInfo1 = GsonTools.changeGsonToBean(weatherInfo, WeatherInfo.class);
+
+
         String time = weatherInfo1.getResults().get(0).getLast_update();
         String HighTemperature = weatherInfo1.getResults().get(0).getDaily().get(0).getHigh();
         String LowTemperature = weatherInfo1.getResults().get(0).getDaily().get(0).getLow();

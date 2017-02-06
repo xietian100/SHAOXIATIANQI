@@ -14,9 +14,11 @@ import com.lidroid.xutils.view.annotation.ViewInject;
 import com.xietian.shaoxiaweather.sxtq.bean.CityInfo;
 import com.xietian.shaoxiaweather.sxtq.bean.WeatherInfo;
 import com.xietian.shaoxiaweather.sxtq.net.GetDataFromServer;
+import com.xietian.shaoxiaweather.sxtq.utils.GsonTools;
 import com.xietian.shaoxiaweather.sxtq.utils.PrefUtils;
 import com.xietian.shaoxiaweather.sxtq.utils.UIUtils;
 import com.xietian.shaoxiaweather.sxtq.view.FutureDetail;
+import com.xietian.shaoxiaweather.sxtq.view.Suggestion;
 import com.xietian.shaoxiaweather.sxtq.view.TodayDetail;
 
 
@@ -30,13 +32,28 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private TextView cityname;
     private TodayDetail todayDetail;
     private FutureDetail future_detail;
+    private Suggestion suggestion;
+
+    private static MainActivity mainActivity;
 
 
+
+    private WeatherInfo weatherInfo1;
+    public WeatherInfo getWeatherInfo1() {
+        return weatherInfo1;
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         ininData();
         super.onCreate(savedInstanceState);
 
+    }
+    public MainActivity() {
+        mainActivity = this;
+    }
+
+    public static MainActivity getMainActivity() {
+        return mainActivity;
     }
 
 
@@ -47,8 +64,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         location=(ImageView) findViewById(R.id.location);
         refresh=(ImageView) findViewById(R.id.refresh);
         cityname= (TextView) findViewById(R.id.cityname);
+
         todayDetail= (TodayDetail) findViewById(R.id.today_detail);
         future_detail= (FutureDetail) findViewById(R.id.future_detail);
+        suggestion= (Suggestion) findViewById(R.id.suggestion);
 
         cityname.setText(city);
     share.setOnClickListener(this);
@@ -59,6 +78,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private void ininData(){
         weatherInfo = PrefUtils.getString("weatherInfo", null, UIUtils.getContext());
         city=PrefUtils.getString("city",null,UIUtils.getContext());
+        weatherInfo1 = GsonTools.changeGsonToBean(weatherInfo, WeatherInfo.class);
     }
 
 

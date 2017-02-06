@@ -52,7 +52,17 @@
 
     </RelativeLayout>
 
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical"
+        >
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
     <com.xietian.shaoxiaweather.sxtq.view.TodayDetail
         android:id="@+id/today_detail"
         android:layout_width="360dp"
@@ -67,11 +77,12 @@
         android:layout_marginTop="8dp"
         android:background="#ecf0f1"></com.xietian.shaoxiaweather.sxtq.view.FutureDetail>
 
-    <Relativecom.xietian.shaoxiaweather.sxtq.view.SuggestionLayout
+    <com.xietian.shaoxiaweather.sxtq.view.Suggestion
+        android:id="@+id/suggestion"
         android:layout_width="match_parent"
         android:layout_height="140dp"
         android:layout_marginTop="8dp"
-        android:background="#ecf0f1"></Relativecom.xietian.shaoxiaweather.sxtq.view.SuggestionLayout>
-
-
+        android:background="#ecf0f1"></com.xietian.shaoxiaweather.sxtq.view.Suggestion>
+    </LinearLayout>
+    </ScrollView>
 </LinearLayout>
