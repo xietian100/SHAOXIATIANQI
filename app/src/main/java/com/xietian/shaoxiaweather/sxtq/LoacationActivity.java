@@ -13,5 +13,6 @@ public class LoacationActivity extends BaseActivity {
     @Override
     protected void initView() {
         setContentView(R.layout.activity_location);
+
     }
 }

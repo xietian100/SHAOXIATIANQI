@@ -9,7 +9,9 @@ import android.widget.LinearLayout;
 
 import com.xietian.shaoxiaweather.sxtq.R;
 import com.xietian.shaoxiaweather.sxtq.adapter.HorizontalListViewAdapter;
+import com.xietian.shaoxiaweather.sxtq.application.BaseApplication;
 import com.xietian.shaoxiaweather.sxtq.bean.WeatherInfo;
+import com.xietian.shaoxiaweather.sxtq.golabal.Constant;
 import com.xietian.shaoxiaweather.sxtq.utils.UIUtils;
 
 import java.util.ArrayList;
@@ -26,6 +28,8 @@ import lecho.lib.hellocharts.model.PointValue;
 import lecho.lib.hellocharts.model.ValueShape;
 import lecho.lib.hellocharts.view.LineChartView;
 
+import static com.xietian.shaoxiaweather.sxtq.application.BaseApplication.getApplication;
+
 /**
  * Created by Administrator on 2017/2/2.
  */
@@ -34,6 +38,8 @@ public class FutureDetail extends LinearLayout{
     private HorizontalListView horizontalListView;
     private HorizontalListViewAdapter horizontalListViewAdapter;
     private LineChartView lineChart;
+    private BaseApplication app;
+
     public FutureDetail(Context context) {
         super(context);
         initView();
@@ -52,6 +58,7 @@ public class FutureDetail extends LinearLayout{
     private void initView() {
         LayoutInflater inflater = (LayoutInflater) UIUtils.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.future_detail, this);
+        app= (BaseApplication) getApplication();
 
         horizontalListView= (HorizontalListView) view.findViewById(R.id.HorizontalListView);
         horizontalListViewAdapter=new HorizontalListViewAdapter(UIUtils.getContext());
@@ -64,10 +71,16 @@ public class FutureDetail extends LinearLayout{
         List<PointValue> valuesLow = new ArrayList<PointValue>();
 
         int i;
-        List<WeatherInfo.ResultsBean.DailyBean> day = horizontalListViewAdapter.getWeatherInfo1().getResults().get(0).getDaily();
-        for(i=0;i<day.size();i++){
-            valuesHigh.add(new PointValue(i, Integer.parseInt(day.get(i).getHigh())));
-            valuesLow.add(new PointValue(i, Integer.parseInt(day.get(i).getLow())));
+        WeatherInfo weatherInfo1 = app.getWeatherInfo1();
+        if(weatherInfo1!=null){
+
+        List<WeatherInfo.ResultsBean.DailyBean> day = weatherInfo1.getResults().get(0).getDaily();
+
+            for(i=0;i<day.size();i++){
+                valuesHigh.add(new PointValue(i, Integer.parseInt(day.get(i).getHigh())));
+                valuesLow.add(new PointValue(i, Integer.parseInt(day.get(i).getLow())));
+        }
+
         }
 
 
@@ -75,11 +88,11 @@ public class FutureDetail extends LinearLayout{
         //In most cased you can call data model methods in builder-pattern-like manner.
         Line lineHigh = new Line(valuesHigh).setColor(Color.parseColor("#2c3e50")).setCubic(false).setStrokeWidth(1);
         lineHigh.setPointRadius(3);//座标点大小
-        lineHigh.setFilled(true);//是否填充曲线的面积
+        lineHigh.setFilled(false);//是否填充曲线的面积
 
-        Line lineLow = new Line(valuesLow).setColor(Color.parseColor("#2c3e20")).setCubic(true).setStrokeWidth(1);
+        Line lineLow = new Line(valuesLow).setColor(Color.parseColor("#2c3e20")).setCubic(false).setStrokeWidth(1);
         lineLow.setPointRadius(3);//座标点大小
-        lineLow.setFilled(true);//是否填充曲线的面积
+        lineLow.setFilled(false);//是否填充曲线的面积
 
 
 

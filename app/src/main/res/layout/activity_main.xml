@@ -12,7 +12,9 @@
         android:layout_width="360dp"
         android:layout_height="53dp"
         android:background="@drawable/title_background"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        android:layout_marginBottom="4dp"
+        >
 
         <ImageView
             android:id="@+id/share"
@@ -52,7 +54,8 @@
 
     </RelativeLayout>
 
-    <ScrollView
+    <com.handmark.pulltorefresh.library.PullToRefreshScrollView
+        android:id="@+id/scroll_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:scrollbars="vertical"
@@ -67,7 +70,7 @@
         android:id="@+id/today_detail"
         android:layout_width="360dp"
         android:layout_height="200dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:background="#ecf0f1"></com.xietian.shaoxiaweather.sxtq.view.TodayDetail>
 
     <com.xietian.shaoxiaweather.sxtq.view.FutureDetail
@@ -83,6 +86,11 @@
         android:layout_height="140dp"
         android:layout_marginTop="8dp"
         android:background="#ecf0f1"></com.xietian.shaoxiaweather.sxtq.view.Suggestion>
+
     </LinearLayout>
-    </ScrollView>
+
+
+    </com.handmark.pulltorefresh.library.PullToRefreshScrollView>
+
+
 </LinearLayout>

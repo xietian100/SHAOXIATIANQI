@@ -9,10 +9,12 @@ import android.widget.LinearLayout;
 
 import com.xietian.shaoxiaweather.sxtq.MainActivity;
 import com.xietian.shaoxiaweather.sxtq.R;
+import com.xietian.shaoxiaweather.sxtq.application.BaseApplication;
 import com.xietian.shaoxiaweather.sxtq.bean.WeatherInfo;
+import com.xietian.shaoxiaweather.sxtq.golabal.Constant;
 import com.xietian.shaoxiaweather.sxtq.utils.UIUtils;
 
-
+import static com.xietian.shaoxiaweather.sxtq.application.BaseApplication.getApplication;
 
 
 /**
@@ -24,6 +26,7 @@ public class Suggestion extends LinearLayout{
     Suggestion_item wind_scare;
     Suggestion_item wind_speed;
     Suggestion_item wind_direction;
+    private BaseApplication app;
 
 
     public Suggestion(Context context) {
@@ -44,13 +47,12 @@ public class Suggestion extends LinearLayout{
     private void initView() {
         LayoutInflater inflater = (LayoutInflater) UIUtils.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.suggestion, this);
+        app= (BaseApplication) getApplication();
 
-
-        WeatherInfo weatherInfo1 = MainActivity.getMainActivity().getWeatherInfo1();
+        WeatherInfo weatherInfo1 = app.getWeatherInfo1();
+        if(weatherInfo1!=null){
         WeatherInfo.ResultsBean.DailyBean today = weatherInfo1.getResults().get(0).getDaily().get(0);
-
         String time_zone_desc=today.getText_night();
-
 
         night = (Suggestion_item) view.findViewById(R.id.night);
         night.getTitle().setText("夜间气象");
@@ -67,6 +69,6 @@ public class Suggestion extends LinearLayout{
         wind_direction = (Suggestion_item) view.findViewById(R.id.wind_direction);
         wind_direction.getTitle().setText("风向");
         wind_direction.getDesc().setText(today.getWind_direction());
-
+        }
     }
 }

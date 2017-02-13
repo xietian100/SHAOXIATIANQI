@@ -14,31 +14,37 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.xietian.shaoxiaweather.sxtq.MainActivity;
 import com.xietian.shaoxiaweather.sxtq.R;
+import com.xietian.shaoxiaweather.sxtq.application.BaseApplication;
 import com.xietian.shaoxiaweather.sxtq.bean.WeatherInfo;
+import com.xietian.shaoxiaweather.sxtq.golabal.Constant;
 import com.xietian.shaoxiaweather.sxtq.utils.GsonTools;
 import com.xietian.shaoxiaweather.sxtq.utils.PrefUtils;
 import com.xietian.shaoxiaweather.sxtq.utils.UIUtils;
 import com.xietian.shaoxiaweather.sxtq.view.ChooseWeatherPic;
 
+import static com.xietian.shaoxiaweather.sxtq.application.BaseApplication.getApplication;
+
 public class HorizontalListViewAdapter extends BaseAdapter{
 
-    String weatherInfo = PrefUtils.getString("weatherInfo", null, UIUtils.getContext());
-
-    public WeatherInfo getWeatherInfo1() {
-        return weatherInfo1;
-    }
-
-    WeatherInfo weatherInfo1 = GsonTools.changeGsonToBean(weatherInfo, WeatherInfo.class);
+    WeatherInfo weatherInfo1 ;
+    private LayoutInflater mInflater;
+    private BaseApplication app;
 
     public HorizontalListViewAdapter(Context con){
         mInflater=LayoutInflater.from(con);
+        app= (BaseApplication) getApplication();
+        weatherInfo1= app.getWeatherInfo1();
     }
     @Override
     public int getCount() {
+        if(weatherInfo1!= null){
         return weatherInfo1.getResults().get(0).getDaily().size();
+        }else {
+            return 0;
+        }
     }
-    private LayoutInflater mInflater;
     @Override
     public Object getItem(int position) {
         return position;
@@ -69,6 +75,7 @@ public class HorizontalListViewAdapter extends BaseAdapter{
         }else{
             vh=(ViewHolder)convertView.getTag();
         }
+
         WeatherInfo.ResultsBean.DailyBean daily = weatherInfo1.getResults().get(0).getDaily().get(position);
 
         vh.item_date.setText(daily.getDate().substring(5));

@@ -10,13 +10,17 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
+import com.xietian.shaoxiaweather.sxtq.MainActivity;
 import com.xietian.shaoxiaweather.sxtq.R;
+import com.xietian.shaoxiaweather.sxtq.application.BaseApplication;
 import com.xietian.shaoxiaweather.sxtq.bean.WeatherInfo;
+import com.xietian.shaoxiaweather.sxtq.golabal.Constant;
 import com.xietian.shaoxiaweather.sxtq.utils.GsonTools;
 import com.xietian.shaoxiaweather.sxtq.utils.PrefUtils;
 import com.xietian.shaoxiaweather.sxtq.utils.UIUtils;
 
 import static com.lidroid.xutils.view.ResType.Text;
+import static com.xietian.shaoxiaweather.sxtq.application.BaseApplication.getApplication;
 
 /**
  * Created by Administrator on 2017/1/30.
@@ -29,6 +33,7 @@ public class TodayDetail extends LinearLayout {
     private TextView Time;
     private TextView Weather;
     private TextView Temp;
+    private BaseApplication app;
 
     public WeatherInfo getWeatherInfo1() {
         return weatherInfo1;
@@ -58,7 +63,7 @@ public class TodayDetail extends LinearLayout {
         LayoutInflater inflater = (LayoutInflater) UIUtils.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.today_detail, this);
 
-
+        app= (BaseApplication) getApplication();
         pic = (ImageView) view.findViewById(R.id.pic);
         Today = (TextView) view.findViewById(R.id.Today);
         Time = (TextView) view.findViewById(R.id.Time);
@@ -70,9 +75,9 @@ public class TodayDetail extends LinearLayout {
          * 可从mainActivity中直接取出
          */
 
-        String weatherInfo = PrefUtils.getString("weatherInfo", null, UIUtils.getContext());
-        weatherInfo1 = GsonTools.changeGsonToBean(weatherInfo, WeatherInfo.class);
+        weatherInfo1 = app.getWeatherInfo1();
 
+        if(weatherInfo1!=null){
 
         String time = weatherInfo1.getResults().get(0).getLast_update();
         String HighTemperature = weatherInfo1.getResults().get(0).getDaily().get(0).getHigh();
@@ -86,6 +91,7 @@ public class TodayDetail extends LinearLayout {
         Weather.setText(DayText);
         Time.setText(str1);
         Temp.setText(HighTemperature + "-" + LowTemperature+"℃");
+        }
 
 
     }
