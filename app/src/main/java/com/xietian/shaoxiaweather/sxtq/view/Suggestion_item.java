@@ -17,9 +17,6 @@ import com.xietian.shaoxiaweather.sxtq.utils.UIUtils;
 
 public class Suggestion_item extends LinearLayout{
     private ImageView pic;
-
-
-
     private TextView title;
     private TextView desc;
 

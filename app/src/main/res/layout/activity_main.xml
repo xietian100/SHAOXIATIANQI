@@ -6,13 +6,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:scrollbars="vertical"
+    android:background="#f2f2f2"
     >
 
     <RelativeLayout
         android:layout_width="360dp"
-        android:layout_height="53dp"
-        android:background="@drawable/title_background"
-        android:gravity="center_vertical"
+        android:layout_height="65dp"
+        android:background="@drawable/title_bg"
         android:layout_marginBottom="4dp"
         >
 
@@ -20,10 +20,10 @@
             android:id="@+id/share"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="6dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="16dp"
             android:background="@drawable/share"
-
+            android:layout_marginTop="16dp"
             android:clickable="true" />
 
         <ImageView
@@ -31,7 +31,8 @@
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="133dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="16dp"
             android:background="@drawable/location"
             android:clickable="true" />
 
@@ -39,8 +40,9 @@
             android:id="@+id/refresh"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="6dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
             android:background="@drawable/refresh"
             android:clickable="true" />
 
@@ -48,44 +50,48 @@
             android:id="@+id/cityname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:text="北京"
+            android:layout_marginLeft="52dp"
+            android:layout_marginTop="13dp"
+
             android:textSize="22sp" />
 
     </RelativeLayout>
 
     <com.handmark.pulltorefresh.library.PullToRefreshScrollView
         android:id="@+id/scroll_view"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scrollbars="vertical"
+        android:background="#f2f2f2"
+        android:gravity="center_horizontal"
         >
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:gravity="center_horizontal"
         >
     <com.xietian.shaoxiaweather.sxtq.view.TodayDetail
         android:id="@+id/today_detail"
-        android:layout_width="360dp"
-        android:layout_height="200dp"
-        android:layout_marginTop="4dp"
-        android:background="#ecf0f1"></com.xietian.shaoxiaweather.sxtq.view.TodayDetail>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        ></com.xietian.shaoxiaweather.sxtq.view.TodayDetail>
 
     <com.xietian.shaoxiaweather.sxtq.view.FutureDetail
         android:id="@+id/future_detail"
-        android:layout_width="360dp"
-        android:layout_height="200dp"
-        android:layout_marginTop="8dp"
-        android:background="#ecf0f1"></com.xietian.shaoxiaweather.sxtq.view.FutureDetail>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        ></com.xietian.shaoxiaweather.sxtq.view.FutureDetail>
 
     <com.xietian.shaoxiaweather.sxtq.view.Suggestion
         android:id="@+id/suggestion"
-        android:layout_width="match_parent"
-        android:layout_height="140dp"
-        android:layout_marginTop="8dp"
-        android:background="#ecf0f1"></com.xietian.shaoxiaweather.sxtq.view.Suggestion>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        ></com.xietian.shaoxiaweather.sxtq.view.Suggestion>
 
     </LinearLayout>
 

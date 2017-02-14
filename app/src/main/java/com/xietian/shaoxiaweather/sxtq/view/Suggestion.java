@@ -57,18 +57,23 @@ public class Suggestion extends LinearLayout{
         night = (Suggestion_item) view.findViewById(R.id.night);
         night.getTitle().setText("夜间气象");
         night.getDesc().setText(time_zone_desc);
+            night.getPic().setImageResource(R.drawable.suggest_night);
+
 
         wind_scare = (Suggestion_item) view.findViewById(R.id.wind_scare);
         wind_scare.getTitle().setText("风力等级");
         wind_scare.getDesc().setText(today.getWind_scale());
+            wind_scare.getPic().setImageResource(R.drawable.suggest_windscare);
 
         wind_speed = (Suggestion_item) view.findViewById(R.id.wind_speed);
         wind_speed.getTitle().setText("风速");
         wind_speed.getDesc().setText(today.getWind_speed());
+            wind_speed.getPic().setImageResource(R.drawable.suggest_windspeed);
 
         wind_direction = (Suggestion_item) view.findViewById(R.id.wind_direction);
         wind_direction.getTitle().setText("风向");
         wind_direction.getDesc().setText(today.getWind_direction());
+            wind_direction.getPic().setImageResource(R.drawable.suggest_windsorention);
         }
     }
 }
